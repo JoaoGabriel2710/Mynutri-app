@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">#33EE66</color>
+    <color name="secondary_color">#122932</color>
+    <color name="terciary_color">#FFFFFFFF</color>
+    <color name="gradient_color">#6ED863</color>
+</resources>
