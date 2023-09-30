@@ -1,4 +1,4 @@
-package com.example.mynutri_app.composables.commons
+package com.example.mynutri_app.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -25,7 +25,7 @@ import com.example.mynutri_app.ui.theme.PrimaryColor
 fun MyAppButton(
     modifier: Modifier = Modifier,
     text: String,
-    showIcon: Boolean = true,
+    showIcon: Boolean = false,
     buttonIcon: ImageVector,
     backgroundColor: Color = PrimaryColor
 ) {

@@ -1,4 +1,4 @@
-package com.example.mynutri_app.composables.widgets
+package com.example.mynutri_app.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,29 +64,28 @@ fun Category(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = modifier
-                .padding(horizontal = 12.dp, vertical = 0.dp)
-                .fillMaxWidth()
+            modifier = modifier.fillMaxWidth()
         ) {
             Text(
                 text = "Categorias",
                 style = TextStyle(
                     fontSize = 19.sp,
                     fontWeight = FontWeight.SemiBold
-                )
+                  )
                 );
 
-            Icon(
-                painter = painterResource(id = R.drawable.more_icon),
-                contentDescription = null,
-                modifier = modifier.size(28.dp)
-            )
+            IconButton(
+                onClick = { /*TODO*/ }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.more_icon),
+                    contentDescription = null,
+                    modifier = modifier.size(28.dp)
+                )
+            }
         }
 
         Spacer(modifier = modifier.height(5.dp))
-        LazyRow(
-            modifier = Modifier.padding(10.dp)
-        ) {
+        LazyRow {
             items(categoryCardList) { item ->
                 CategoryCard(
                     image = item.image,

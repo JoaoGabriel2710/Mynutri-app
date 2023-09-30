@@ -1,4 +1,4 @@
-package com.example.mynutri_app.composables.widgets
+package com.example.mynutri_app.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -42,7 +42,7 @@ fun SearchTextField(
             fontSize = 16.sp,
             color = Color.Black
         ),
-        modifier = modifier, // Use o modificador passado como argumento
+        modifier = modifier,
         shape = RoundedCornerShape(6.dp)
     )
 }

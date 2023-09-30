@@ -1,30 +1,21 @@
-package com.example.mynutri_app.composables.widgets
+package com.example.mynutri_app.recipes
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material.icons.rounded.ArrowForward
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -32,11 +23,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mynutri_app.R
-import com.example.mynutri_app.composables.commons.MyAppButton
+import com.example.mynutri_app.components.MyAppButton
 import com.example.mynutri_app.ui.theme.MynutriappTheme
 
 @Composable
-fun FoodCard(
+fun RecipeCard(
     modifier: Modifier = Modifier,
     @DrawableRes cardImage: Int? = null,
     @DrawableRes fallbackImage: Int = R.drawable.no_image,
@@ -45,9 +36,7 @@ fun FoodCard(
 ) {
     Card(
         elevation = CardDefaults.cardElevation(4.dp),
-        modifier = modifier
-            .width(155.dp)
-            .padding(bottom = 15.dp)
+        modifier = modifier.padding(bottom = 15.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()
@@ -61,7 +50,7 @@ fun FoodCard(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp) // Ajuste a altura conforme necessário
+                    .height(120.dp)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -97,12 +86,11 @@ fun FoodCard(
                         )
                     }
 
-
                     MyAppButton(
                         text = "Ver",
                         showIcon = false,
                         buttonIcon = Icons.Default.ArrowForward,
-                        modifier = Modifier.height(33.dp).wrapContentSize()
+                        modifier = Modifier.weight(1f)
                     )
                 }
 
@@ -116,7 +104,7 @@ fun FoodCard(
 @Composable
 fun FoodCardPreview() {
     MynutriappTheme {
-        FoodCard(
+        RecipeCard(
             cardTitle = "Titulo",
             cardCategory = "Categoria")
     }

@@ -1,0 +1,99 @@
+package com.example.mynutri_app.home
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.mynutri_app.components.MyAppButton
+import com.example.mynutri_app.components.MyTopAppBar
+import com.example.mynutri_app.components.Category
+import com.example.mynutri_app.components.SearchTextField
+import com.example.mynutri_app.model.RecipeCardItem
+import com.example.mynutri_app.recipes.RecipeCard
+import com.example.mynutri_app.ui.theme.MynutriappTheme
+
+@Composable
+fun HomeScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        MyTopAppBar(
+            title = "Olá! user123",
+            startIcon = Icons.Default.Menu,
+            endIcon = Icons.Default.Favorite,
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            SearchTextField(modifier = Modifier.weight(1f))
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            MyAppButton(
+                modifier = Modifier.width(120.dp),
+                text = "Filtrar",
+                showIcon = true,
+                buttonIcon = Icons.Default.KeyboardArrowDown
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Category()
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        val recipeCardList = List(7) {
+            RecipeCardItem(cardTitle = "Titulo", cardCategory = "Categoria")
+        }
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            userScrollEnabled = true,
+            content = {
+                items(recipeCardList) { item ->
+                    RecipeCard(
+                        cardTitle = item.cardTitle,
+                        cardCategory = item.cardCategory
+                    )
+                }
+            }
+        )
+    }
+}
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun HomePreview() {
+    MynutriappTheme {
+        HomeScreen()
+    }
+}
