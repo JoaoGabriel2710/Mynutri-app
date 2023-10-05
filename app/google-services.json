@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1084112482394",
+    "firebase_url": "https://mynutri-app-default-rtdb.firebaseio.com",
+    "project_id": "mynutri-app",
+    "storage_bucket": "mynutri-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084112482394:android:61a9998b3c152168c9a863",
+        "android_client_info": {
+          "package_name": "com.example.mynutri_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyRjOPTFkpgm9-CThNhmjeewL4CdLUPp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

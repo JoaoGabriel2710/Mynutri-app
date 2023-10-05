@@ -1,6 +1,5 @@
 package com.example.mynutri_app.home
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,9 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -48,12 +46,18 @@ fun HomeScreen() {
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            SearchTextField(modifier = Modifier.weight(1f))
+            SearchTextField(modifier = Modifier
+                .weight(2f)
+                .fillMaxWidth()
+                .height(52.dp))
 
             Spacer(modifier = Modifier.width(8.dp))
 
             MyAppButton(
-                modifier = Modifier.width(120.dp),
+                modifier = Modifier.width(120.dp)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .height(52.dp),
                 text = "Filtrar",
                 showIcon = true,
                 buttonIcon = Icons.Default.KeyboardArrowDown
@@ -70,21 +74,13 @@ fun HomeScreen() {
             RecipeCardItem(cardTitle = "Titulo", cardCategory = "Categoria")
         }
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            userScrollEnabled = true,
-            content = {
-                items(recipeCardList) { item ->
-                    RecipeCard(
-                        cardTitle = item.cardTitle,
-                        cardCategory = item.cardCategory
-                    )
-                }
-            }
-        )
+       LazyRow {
+           items(recipeCardList) {
+               item -> RecipeCard(
+               cardTitle = item.cardTitle,
+               cardCategory = item.cardCategory)
+           }
+       }
     }
 }
 

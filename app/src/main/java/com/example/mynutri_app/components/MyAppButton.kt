@@ -27,14 +27,15 @@ fun MyAppButton(
     text: String,
     showIcon: Boolean = false,
     buttonIcon: ImageVector,
-    backgroundColor: Color = PrimaryColor
+    backgroundColor: Color = PrimaryColor,
+    borderRadius: RoundedCornerShape = RoundedCornerShape(6.dp),
 ) {
     Button(
         onClick = { /*TODO*/ },
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor
         ),
-        shape = RoundedCornerShape(6.dp),
+        shape = borderRadius,
         modifier = modifier
     ) {
         Row(
