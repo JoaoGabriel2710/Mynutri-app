@@ -21,8 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mynutri_app.components.MyAppButton
 import com.example.mynutri_app.components.MyTopAppBar
-import com.example.mynutri_app.components.Category
-import com.example.mynutri_app.components.SearchTextField
+import com.example.mynutri_app.home.components.Category
+import com.example.mynutri_app.home.components.SearchTextField
 import com.example.mynutri_app.model.RecipeCardItem
 import com.example.mynutri_app.recipes.RecipeCard
 import com.example.mynutri_app.ui.theme.MynutriappTheme

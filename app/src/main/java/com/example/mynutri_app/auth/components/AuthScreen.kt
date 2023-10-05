@@ -30,13 +30,18 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.mynutri_app.model.Validation
 import com.example.mynutri_app.ui.theme.MynutriappTheme
 import com.example.mynutri_app.ui.theme.PrimaryColor
 import com.example.mynutri_app.ui.theme.SecondaryColor
 import com.example.mynutri_app.ui.theme.TerciaryColor
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,6 +51,11 @@ fun AuthScreen(
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val SpacerHeight = Modifier.height(35.dp)
+
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance();
+    val auth = Firebase.auth;
+
+    var errorMessage by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -130,7 +140,26 @@ fun AuthScreen(
                 Spacer(modifier = SpacerHeight)
 
                 Button(
-                    onClick = { /* TODO */ },
+                    onClick = {
+                        if (email.isNotEmpty() && Validation.isValidEmail(email) &&
+                            password.isNotEmpty() && Validation.isValidPassword(password))
+                        {
+                            firebaseAuth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener { task ->
+                                    if(task.isSuccessful) {
+                                        // Autenticação Bem-sucessedida
+                                        // Redirecionar
+                                    } else {
+                                        val exception = task.exception;
+                                        if (exception != null) {
+                                            errorMessage = "Erro ao autenticar usuário + ${exception.message}";
+                                        }
+                                    }
+                                }
+                        } else {
+                            errorMessage = "Por favor, preencha todos os campos";
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
@@ -143,6 +172,18 @@ fun AuthScreen(
                     Text(
                         text = "Entrar",
                         fontSize = 18.sp
+                    )
+                }
+
+                if(errorMessage.isNotEmpty()) {
+                    Text(
+                        text = errorMessage,
+                        style = TextStyle(
+                            textAlign = TextAlign.Start,
+                            color = Color.Red
+                        ),
+                        modifier = modifier
+                            .fillMaxWidth()
                     )
                 }
             }

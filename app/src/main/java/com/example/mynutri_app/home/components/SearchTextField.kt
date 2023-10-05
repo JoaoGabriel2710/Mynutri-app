@@ -1,4 +1,4 @@
-package com.example.mynutri_app.components
+package com.example.mynutri_app.home.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
