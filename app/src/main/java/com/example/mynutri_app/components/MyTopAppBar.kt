@@ -5,7 +5,6 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Favorite
@@ -32,6 +31,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.mynutri_app.routes.AppDestination
 import com.example.mynutri_app.ui.theme.MynutriappTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,6 +45,7 @@ fun MyTopAppBar(
     endIcon: ImageVector,
 ) {
     var isExpanded by remember { mutableStateOf(false) }
+    val navController: NavController = rememberNavController()
 
     TopAppBar(
         title = {
@@ -93,7 +96,7 @@ fun MyTopAppBar(
                     trailingIcon = {
                         IconButton(
                             onClick = {
-
+                                navController.navigate(AppDestination.AuthScreen.route);
                             }
                         ) {
                             Icon(imageVector = Icons.Default.ExitToApp, contentDescription = "Icone de saida para logout")

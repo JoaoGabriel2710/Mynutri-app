@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.mynutri_app.auth.components.AuthScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.mynutri_app.auth.AuthScreen
 import com.example.mynutri_app.home.HomeScreen
+import com.example.mynutri_app.routes.AppDestination
 import com.example.mynutri_app.ui.theme.MynutriappTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,18 +19,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MynutriappTheme {
-                    HomeScreen()
+                val navController = rememberNavController();
+                NavHost(navController = navController, startDestination = AppDestination.AuthScreen.route) {
+                        composable(AppDestination.HomeScreen.route) { HomeScreen(navController)}
+                        composable(AppDestination.AuthScreen.route) { AuthScreen(navController) }
+                    }
                 }
             }
         }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        MynutriappTheme {
-            HomeScreen()
-        }
-    }
-}
