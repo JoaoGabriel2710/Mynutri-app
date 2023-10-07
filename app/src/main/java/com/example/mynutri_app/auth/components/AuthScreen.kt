@@ -14,8 +14,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,7 +27,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,21 +36,15 @@ import com.example.mynutri_app.ui.theme.MynutriappTheme
 import com.example.mynutri_app.ui.theme.PrimaryColor
 import com.example.mynutri_app.ui.theme.SecondaryColor
 import com.example.mynutri_app.ui.theme.TerciaryColor
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    val SpacerHeight = Modifier.height(35.dp)
+    val SpacerHeight = modifier.height(35.dp)
 
-    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance();
-    val auth = Firebase.auth;
 
     var errorMessage by remember { mutableStateOf("") }
 
@@ -74,7 +65,7 @@ fun AuthScreen(
             )
         )
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = modifier.weight(1f))
 
         Surface(
             modifier = Modifier
@@ -92,7 +83,7 @@ fun AuthScreen(
             ) {
                 Text(
                     text = "Faça seu Login",
-                    modifier = Modifier
+                    modifier = modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
                     style = TextStyle(
@@ -131,7 +122,7 @@ fun AuthScreen(
 
                 Text(
                     text = "Esqueci minha Senha",
-                    modifier = Modifier
+                    modifier = modifier
                         .fillMaxWidth()
                         .padding(top = 8.dp),
                     color = SecondaryColor
@@ -144,23 +135,12 @@ fun AuthScreen(
                         if (email.isNotEmpty() && Validation.isValidEmail(email) &&
                             password.isNotEmpty() && Validation.isValidPassword(password))
                         {
-                            firebaseAuth.signInWithEmailAndPassword(email, password)
-                                .addOnCompleteListener { task ->
-                                    if(task.isSuccessful) {
-                                        // Autenticação Bem-sucessedida
-                                        // Redirecionar
-                                    } else {
-                                        val exception = task.exception;
-                                        if (exception != null) {
-                                            errorMessage = "Erro ao autenticar usuário + ${exception.message}";
-                                        }
-                                    }
-                                }
+
                         } else {
                             errorMessage = "Por favor, preencha todos os campos";
                         }
                     },
-                    modifier = Modifier
+                    modifier = modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                         .height(55.dp),

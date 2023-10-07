@@ -5,13 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.Key.Companion.Home
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mynutri_app.auth.components.AuthScreen
 import com.example.mynutri_app.home.HomeScreen
@@ -23,8 +17,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MynutriappTheme {
-                HomeScreen()
+                    HomeScreen()
+                }
             }
+        }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HomeScreenPreview() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        MynutriappTheme {
+            HomeScreen()
         }
     }
 }

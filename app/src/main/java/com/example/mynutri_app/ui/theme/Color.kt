@@ -15,6 +15,7 @@ val GradientColor = Modifier.background(
         radius = 100f
     )
 )
+val NoImageBackground = Color(0xFFE9EEF1)
 
 /*
     Criar as cores para o tema escuro

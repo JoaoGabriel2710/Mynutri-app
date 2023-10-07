@@ -1,5 +1,6 @@
 package com.example.mynutri_app.home.components
 
+import android.os.Build
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -140,9 +141,11 @@ fun CategoryCard(
 @Preview(showBackground = true)
 @Composable
 fun CategoryPreview() {
-    MynutriappTheme {
-        Surface(modifier = Modifier.fillMaxSize()) {
-            Category();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        MynutriappTheme {
+            Surface(modifier = Modifier.fillMaxSize()) {
+                Category();
+            }
         }
     }
 }

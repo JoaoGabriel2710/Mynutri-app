@@ -89,12 +89,12 @@ fun MyTextField(
                 )
             }
         },
-        colors = TextFieldDefaults.textFieldColors(
-            textColor = SecondaryColor,
-            containerColor = Color.Transparent,
+        colors = TextFieldDefaults.colors(
+            focusedTextColor = SecondaryColor,
+            focusedContainerColor = Color.Transparent,
             focusedIndicatorColor = SecondaryColor,
             unfocusedIndicatorColor = SecondaryColor,
-            errorIndicatorColor = Color.Red
+            errorIndicatorColor = Color.Red,
         ),
         modifier = modifier
             .fillMaxWidth()
