@@ -2,9 +2,12 @@ package com.example.mynutri_app.components
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Favorite
@@ -30,11 +33,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.mynutri_app.routes.AppDestination
 import com.example.mynutri_app.ui.theme.MynutriappTheme
+import com.example.mynutri_app.ui.theme.TerciaryColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,7 +50,7 @@ fun MyTopAppBar(
     endIcon: ImageVector,
 ) {
     var isExpanded by remember { mutableStateOf(false) }
-    val navController: NavController = rememberNavController()
+    val navController: NavController = rememberNavController();
 
     TopAppBar(
         title = {
@@ -72,7 +77,11 @@ fun MyTopAppBar(
             }
             DropdownMenu(
                 expanded = isExpanded,
-                onDismissRequest = { isExpanded = false }) {
+                onDismissRequest = { isExpanded = false },
+                modifier = modifier
+                    .width(180.dp)
+                    .background(TerciaryColor)
+            ) {
 
                 DropdownMenuItem(
                     text = { Text(text = "Meu perfil") },

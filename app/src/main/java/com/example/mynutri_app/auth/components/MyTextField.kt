@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -22,6 +24,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -43,6 +46,7 @@ fun MyTextField(
     isPassword: Boolean = false,
     isEmail: Boolean = false,
     errorMessage: String,
+    errorIcon: ImageVector = Icons.Default.Info,
     keyboardType: KeyboardType,
     topAndBottomPadding: Modifier = Modifier.padding(top = 2.dp, bottom = 2.dp),
 ) {
@@ -55,7 +59,11 @@ fun MyTextField(
             onValueChange(it);
             isError = false;
         },
-        label = { Text(text = labelText) },
+        label = {
+            Text(
+                text = labelText,
+                style = MaterialTheme.typography.bodyMedium)
+        },
         singleLine = true,
         keyboardOptions = KeyboardOptions(
             keyboardType = keyboardType,
@@ -77,7 +85,7 @@ fun MyTextField(
         trailingIcon = {
             if (isError) {
                 Icon(
-                    imageVector = Icons.Outlined.Info,
+                    imageVector = errorIcon,
                     contentDescription = "Icone avisando um erro",
                     modifier = topAndBottomPadding
                 )

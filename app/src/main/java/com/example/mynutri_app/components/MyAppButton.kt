@@ -1,5 +1,6 @@
 package com.example.mynutri_app.components
 
+import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,14 +21,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mynutri_app.ui.theme.MynutriappTheme
 import com.example.mynutri_app.ui.theme.PrimaryColor
+import com.example.mynutri_app.ui.theme.SecondaryColor
 
 @Composable
 fun MyAppButton(
     modifier: Modifier = Modifier,
     text: String,
-    showIcon: Boolean = false,
-    buttonIcon: ImageVector,
-    backgroundColor: Color = PrimaryColor,
+    buttonIcon: ImageVector? = null,
+    backgroundColor: Color,
     borderRadius: RoundedCornerShape = RoundedCornerShape(6.dp),
 ) {
     Button(
@@ -44,7 +45,7 @@ fun MyAppButton(
         ) {
             Text(text = text)
             Spacer(modifier = Modifier.width(3.dp))
-            if (showIcon) {
+            if (buttonIcon != null) {
                 Icon(
                     imageVector = buttonIcon,
                     contentDescription = null
@@ -57,10 +58,13 @@ fun MyAppButton(
 @Preview(showBackground = true)
 @Composable
 fun ButtonPreview() {
-    MynutriappTheme {
-        MyAppButton(
-            text = "Filtrar",
-            showIcon = true,
-            buttonIcon = Icons.Default.KeyboardArrowDown)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        MynutriappTheme {
+            MyAppButton(
+                text = "Filtrar",
+                backgroundColor = SecondaryColor,
+                buttonIcon = Icons.Default.KeyboardArrowDown
+            )
+        }
     }
 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -24,6 +25,7 @@ import com.example.mynutri_app.components.MyTopAppBar
 import com.example.mynutri_app.home.components.Category
 import com.example.mynutri_app.home.components.SearchTextField
 import com.example.mynutri_app.recipes.RecipesSection
+import com.example.mynutri_app.ui.theme.SecondaryColor
 
 @Composable
 fun HomeScreen(
@@ -53,9 +55,9 @@ fun HomeScreen(
             ) {
                 SearchTextField(
                     modifier = modifier
-                        .weight(2f)
+                        .weight(2.3f)
                         .fillMaxWidth()
-                        .height(52.dp)
+                        .height(54.dp)
                 )
 
                 Spacer(modifier = modifier.width(8.dp))
@@ -65,10 +67,10 @@ fun HomeScreen(
                         .width(120.dp)
                         .fillMaxWidth()
                         .weight(1f)
-                        .height(52.dp),
+                        .height(54.dp),
                     text = "Filtrar",
-                    showIcon = true,
-                    buttonIcon = Icons.Default.KeyboardArrowDown
+                    buttonIcon = Icons.Default.KeyboardArrowDown,
+                    backgroundColor = SecondaryColor
                 )
             }
 

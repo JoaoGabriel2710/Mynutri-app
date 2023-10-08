@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,11 +18,18 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -37,6 +45,7 @@ import com.example.mynutri_app.R
 import com.example.mynutri_app.model.CategoryCardsItem
 import com.example.mynutri_app.ui.theme.MynutriappTheme
 import com.example.mynutri_app.ui.theme.PrimaryColor
+import com.example.mynutri_app.ui.theme.TerciaryColor
 
 
 @Composable
@@ -60,6 +69,7 @@ fun Category(
             image = R.drawable.icone_lowcarb,
             cardTitle = "Low carb"),
     );
+    var isExpanded by remember { mutableStateOf(false) }
 
     Column {
         Row(
@@ -69,19 +79,26 @@ fun Category(
         ) {
             Text(
                 text = "Categorias",
-                style = TextStyle(
-                    fontSize = 19.sp,
-                    fontWeight = FontWeight.SemiBold
-                  )
+                style = MaterialTheme.typography.headlineSmall
                 );
 
             IconButton(
-                onClick = { /*TODO*/ }) {
+                onClick = { isExpanded = true }) {
                 Icon(
                     painter = painterResource(id = R.drawable.more_icon),
                     contentDescription = null,
                     modifier = modifier.size(28.dp)
                 )
+
+                DropdownMenu(
+                    expanded = isExpanded,
+                    onDismissRequest = { isExpanded = false },
+                    modifier = modifier.background(TerciaryColor)
+                ) {
+                    DropdownMenuItem(text = {
+                        Text(text = "Ver mais")
+                    }, onClick = { /*TODO*/ })
+                }
             }
         }
 

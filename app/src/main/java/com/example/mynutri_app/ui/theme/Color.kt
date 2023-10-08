@@ -9,12 +9,6 @@ val PrimaryColor = Color(0xFF33EE66)
 val SecondaryColor = Color(0xFF122932)
 val TerciaryColor = Color(0xFFFFFFFF)
 val ColorForGradient = Color(0xFF6ED863)
-val GradientColor = Modifier.background(
-    brush = Brush.radialGradient(
-        colors = listOf(PrimaryColor, ColorForGradient),
-        radius = 100f
-    )
-)
 val NoImageBackground = Color(0xFFE9EEF1)
 
 /*

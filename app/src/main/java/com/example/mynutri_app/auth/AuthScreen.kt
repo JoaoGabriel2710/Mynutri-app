@@ -1,12 +1,16 @@
 package com.example.mynutri_app.auth
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -21,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -28,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.mynutri_app.R
 import com.example.mynutri_app.auth.components.Label
 import com.example.mynutri_app.auth.components.MyTextField
 import com.example.mynutri_app.model.Validation
@@ -40,6 +46,7 @@ import com.example.mynutri_app.ui.theme.TerciaryColor
 fun AuthScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
+    @DrawableRes logoImage: Int = R.drawable.mynutri_logo
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -51,17 +58,28 @@ fun AuthScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(PrimaryColor)
+            .background(PrimaryColor),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
+
+        Image(
+            painter = painterResource(id = logoImage),
+            contentDescription = "Imagem da logo do mynutri",
+            modifier = modifier.padding(top = 10.dp)
+        )
+
         Text(
             text = "Seja bem Vindo(a)",
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .offset(y = (100).dp)
+                .padding(start = 10.dp),
             style = TextStyle(
-                fontSize = 24.sp,
+                fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = SecondaryColor
+                color = SecondaryColor,
+                textAlign = TextAlign.Start
             )
         )
 
