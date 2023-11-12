@@ -47,3 +47,7 @@ Contribuições são bem-vindas! Se você deseja contribuir, abra uma issue para
 - Implementação das Funcionalidades Principais
 - Aprimoramento do Design e Experiência do Usuário
 - Correção de Bugs e Melhorias Gerais
+
+## Licença
+
+Este projeto é licenciado sob os termos da [Licença MIT](LICENSE).
