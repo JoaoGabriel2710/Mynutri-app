@@ -1,34 +1,49 @@
-# Mynutri-app
+# MyNutri - Aplicativo de Nutrição
 
-## Guia projeto:
-- Na pasta main especificamente a `composables`, está sendo criando uma pasta para cada tela aonde ela contém os seus respectivos composables
+Bem-vindo ao repositório do MyNutri, um aplicativo de nutrição desenvolvido em Kotlin com Jetpack Compose. Até o momento, o projeto se concentra principalmente no design e não está finalizado. Este README fornecerá informações básicas sobre o projeto e suas características atuais.
 
-## a paleta de cores já está definida
-- caso precisem utilizar uma das cores do app chamem através de uma variavel que está definida na pasta ui/color:
-- `PrimaryColor`
-- `SecondaryColor`
-- `TerciaryColor`
-- `GradientColor`
+## Descrição do Projeto
 
-## padrões a seguir
-- escrever os codigos em inglês e os arquivos também.
-- caso um arquivo contenha espaço separe com hifen -, no caso do XML separe com underline _.
-- as funções, classes e os `@Composables` devem ser nomeadas como padrão `camelCase` :
+O MyNutri é um aplicativo de nutrição projetado para auxiliar usuários na gestão de sua alimentação e hábitos nutricionais. Neste estágio inicial, o foco é principalmente no design da interface do usuário.
 
-```kotlin
-@Composables
-fun MyFunction(){}
-// ao inves de dar um espaço ou por _ para cada espaço continuem utilizando o padrão `camelCase`.
-```
+## Tecnologias Utilizadas
 
-```kotlin
-class UserModel
-```
+- Kotlin
+- Jetpack Compose
 
-```kotlin
-dataclass CardList 
-```
+## Estrutura do Projeto
 
-```kotlin
-fun myFunction(){}
-```
+- `app/` - Código-fonte Kotlin
+- `res/` - Recursos, como layouts e imagens
+
+## Funcionalidades Implementadas
+
+- Design da Interface do Usuário (UI)
+- [Adicione outras funcionalidades, se houver]
+
+## Funcionalidades Pendentes
+
+- Implementação das Funcionalidades Principais
+- Conexão com Serviços de Nutrição
+- Armazenamento e Gerenciamento de Dados do Usuário
+
+## Instruções de Execução
+
+1. Clone o repositório: `git clone https://github.com/seu-usuario/mynutri.git`
+2. Abra o projeto em um ambiente de desenvolvimento Kotlin/Android Studio.
+
+## Notas Adicionais
+
+- Este projeto está em desenvolvimento e não está finalizado.
+- Até o momento, as funcionalidades principais não foram implementadas.
+- Planejo continuar o desenvolvimento e adicionar novas funcionalidades no futuro.
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você deseja contribuir, abra uma issue para discutir as alterações propostas ou envie um pull request.
+
+## Futuras Atualizações
+
+- Implementação das Funcionalidades Principais
+- Aprimoramento do Design e Experiência do Usuário
+- Correção de Bugs e Melhorias Gerais
