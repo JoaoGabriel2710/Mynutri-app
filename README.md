@@ -19,7 +19,6 @@ O MyNutri é um aplicativo de nutrição projetado para auxiliar usuários na ge
 ## Funcionalidades Implementadas
 
 - Design da Interface do Usuário (UI)
-- [Adicione outras funcionalidades, se houver]
 
 ## Funcionalidades Pendentes
 
